@@ -28,7 +28,7 @@ const styles = theme => ({
   }
 });
 
-const MediaCard = ({
+const transformCourseToViewModel = ({
   classes,
   id,
   status,
@@ -38,7 +38,9 @@ const MediaCard = ({
   progress,
   price
 }) => {
-  let posExtraClass, posLabel, renderActions;
+  const actions = [];
+  const isDisabled = status !== "ACTIVE";
+  let posExtraClass, posLabel;
 
   if (status === "ACTIVE") {
     if (progress && progress.length > 0) {
@@ -56,58 +58,62 @@ const MediaCard = ({
         posLabel = `Progresso: ${progressPercent}%`;
       }
 
-      renderActions = (
-        <CardActions>
-          <Button size="small" color="primary">
-            {progressCount === 0 ? "Começar" : "Continuar"}
-          </Button>
-        </CardActions>
-      );
+      actions.push({
+        label: progressCount === 0 ? "Começar" : "Continuar"
+      });
     } else {
       posLabel = price ? `Preço: R$ ${price}` : "Grátis";
       posExtraClass = classes.posHighlight;
-      renderActions = (
-        <CardActions>
-          <Button size="small" color="primary">
-            Saber mais
-          </Button>
-          {price ? (
-            <Button
-              size="small"
-              color="primary"
-              component={Link}
-              to={`/payment/course/${id}`}
-            >
-              Comprar
-            </Button>
-          ) : (
-            <Button size="small" color="primary">
-              Começar
-            </Button>
-          )}
-        </CardActions>
+
+      actions.push({ label: "Saber mais" });
+      actions.push(
+        price
+          ? { label: "Comprar", link: `/payment/course/${id}` }
+          : { label: "Começar" }
       );
     }
+  } else if (status === "CANCELED") {
+    posLabel = "Cancelado";
+
+    actions.push({ label: "Reativar" });
   } else {
     posLabel = "Em breve...";
-    renderActions = (
-      <CardActions>
-        <Button size="small" color="primary">
-          Saber mais
-        </Button>
-      </CardActions>
-    );
+
+    actions.push({ label: "Saber mais" });
   }
+
+  return {
+    image,
+    name,
+    summary,
+    actions,
+    isDisabled,
+    posExtraClass,
+    posLabel
+  };
+};
+
+const CourseCard = props => {
+  const { classes } = props;
+  const {
+    image,
+    name,
+    summary,
+    actions,
+    isDisabled,
+    posExtraClass,
+    posLabel
+  } = transformCourseToViewModel(props);
 
   return (
     <Card className={classes.card}>
-      <CardActionArea disabled={status !== "ACTIVE"}>
+      <CardActionArea disabled={isDisabled}>
         <CardMedia
           className={classNames(classes.media, {
-            [classes.mediaDisabled]: status !== "ACTIVE"
+            [classes.mediaDisabled]: isDisabled
           })}
           image={`/images/${image}`}
-          title="Contemplative Reptile"
+          title={name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -124,9 +130,21 @@ const MediaCard = ({
           <Typography component="p">{summary}</Typography>
         </CardContent>
       </CardActionArea>
-      {renderActions}
+      <CardActions>
+        {actions.map(action => (
+          <Button
+            key={action.label}
+            size="small"
+            color="primary"
+            component={action.link ? Link : "button"}
+            to={action.link}
+          >
+            {action.label}
+          </Button>
+        ))}
+      </CardActions>
     </Card>
   );
 };
 
-export default withStyles(styles)(MediaCard);
+export default withStyles(styles)(CourseCard);

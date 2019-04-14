@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Curso grátis",
+    "summary": "Lorem ipsum dolor sit amet.",
+    "image": "teste.png",
+    "status": "ACTIVE"
+  },
+  {
+    "id": 2,
+    "name": "Curso pago",
+    "summary": "Lorem ipsum dolor sit amet.",
+    "image": "teste.png",
+    "status": "ACTIVE",
+    "price": 100
+  },
+  {
+    "id": 3,
+    "name": "Curso pago com inscrição",
+    "summary": "Lorem ipsum dolor sit amet.",
+    "image": "teste.png",
+    "status": "ACTIVE",
+    "price": 200,
+    "progress": [
+      { "name": "Tópico 1", "status": "DONE" },
+      { "name": "Tópico 2", "status": "STARTED" },
+      { "name": "Tópico 3", "status": "NOT_STARTED" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Curso a ser lançado",
+    "summary": "Lorem ipsum dolor sit amet.",
+    "image": "teste.png",
+    "status": "INACTIVE"
+  },
+  {
+    "id": 5,
+    "name": "Curso cancelado",
+    "summary": "Lorem ipsum dolor sit amet.",
+    "image": "teste.png",
+    "status": "CANCELED"
+  }
+]

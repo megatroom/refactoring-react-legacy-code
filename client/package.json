@@ -1,6 +1,6 @@
 {
   "name": "refactoring-react-legacy-code-client",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
@@ -35,6 +35,7 @@
   "author": "Bruno Nardini",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^3.2.0"
+    "cypress": "^3.2.0",
+    "react-testing-library": "^6.1.2"
   }
 }
