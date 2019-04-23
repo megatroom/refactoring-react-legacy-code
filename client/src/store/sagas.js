@@ -2,6 +2,7 @@ import { takeLatest, put, all } from "redux-saga/effects";
 
 import ApiService from "../services/ApiService";
 import validation from "../helpers/validation";
+import { transformCourseToViewModel } from "../adapters/courseAdapter";
 import {
   REGISTER,
   REGISTER_SUCCESS,
@@ -92,7 +93,10 @@ function* onRegister(action) {
 function* onGetCourses() {
   try {
     const response = yield ApiService().getCourses();
-    yield put({ type: GET_COURSES_SUCCESS, courses: response.data });
+
+    const courses = response.data.map(transformCourseToViewModel);
+
+    yield put({ type: GET_COURSES_SUCCESS, courses });
   } catch (error) {
     yield put({ type: GET_COURSES_FAIL, message: error.message });
   }
