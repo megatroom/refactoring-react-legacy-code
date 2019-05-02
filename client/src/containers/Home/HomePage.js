@@ -1,20 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { CourseList } from "../../components";
+import CourseList from "../../components/CourseList";
+import Heading from "../../components/Heading";
+import LeadMessage from "../../components/LeadMessage";
+
 import { onGetCourses } from "../../store/actions";
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   componentDidMount() {
     this.props.loadCourses();
+    this.props.loadLectures();
   }
 
   render() {
-    const { courses } = this.props;
+    const { courses, lectures, isLectureDisabled } = this.props;
 
-    return <CourseList courses={courses} />;
+    return (
+      <>
+        <Heading>Cursos</Heading>
+        <CourseList courses={courses} />
+        <Heading>Eventos e Palestras</Heading>
+        {isLectureDisabled ? (
+          <LeadMessage>
+            Em breve conteúdos novos de eventos e palestras.
+          </LeadMessage>
+        ) : (
+          <CourseList courses={lectures} />
+        )}
+      </>
+    );
   }
 }
+
+HomePage.defaultProps = {
+  loadCourses: () => {},
+  loadLectures: () => {},
+  courses: [],
+  lectures: [],
+  isLectureDisabled: false
+};
 
 const mapStateToProps = state => ({
   courses: state.courses
