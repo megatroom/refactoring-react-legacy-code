@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "list": "lerna list",
+    "test": "env CI=true lerna run test --stream",
+    "start": "lerna run start --stream"
+  },
+  "devDependencies": {
+    "lerna": "^3.15.0"
+  }
+}

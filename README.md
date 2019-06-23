@@ -1,5 +1,7 @@
 # Refatorando código legado em projetos React
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Build Status](https://travis-ci.org/megatroom/refactoring-react-legacy-code.svg?branch=master)](https://travis-ci.org/megatroom/refactoring-react-legacy-code)
+
 Este projeto é utilizado como fonte para uma série de artigos no Medium:
 
 - [Parte I - Introdução, primeiros passos e teste de integração](https://medium.com/m4u-tech/refatorando-c%C3%B3digo-legado-em-projetos-react-parte-i-2214fd9ee04d)
