@@ -1,0 +1,50 @@
+{
+  "sessions": [
+    {
+      "id": 1,
+      "title": "React Hooks",
+      "speaker": "Dan Abramov",
+      "summary": "Lorem ipsum dolor sit amet.",
+      "confirmed": true,
+      "available": true
+    },
+    {
+      "id": 2,
+      "title": "React Testing Library",
+      "speaker": "Kent C. Dodds",
+      "summary": "Lorem ipsum dolor sit amet.",
+      "confirmed": true,
+      "available": false
+    },
+    {
+      "id": 3,
+      "title": "React Router",
+      "speaker": "Ryan Florence",
+      "summary": "Lorem ipsum dolor sit amet.",
+      "confirmed": false,
+      "available": false
+    }
+  ],
+  "workshops": [
+    {
+      "id": 1,
+      "description": "Refactoring With JavaScript",
+      "teacher": "Martin Fowler",
+      "grade": [
+        { "title": "A First Example" },
+        { "title": "Principles in Refactoring" },
+        { "title": "Bad Smells in Code" },
+        { "title": "Building Tests" }
+      ]
+    },
+    {
+      "id": 2,
+      "description": "Test-Driven Development By Example",
+      "teacher": "Kent Beck",
+      "grade": [
+        { "title": "The Money Example" },
+        { "title": "The xUnit Example" }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import CourseList from "../../components/CourseList";
 import Heading from "../../components/Heading";
 import LeadMessage from "../../components/LeadMessage";
 
-import { onGetCourses } from "../../store/actions";
+import { onGetCourses, onGetLectures } from "../../store/actions";
 
 export class HomePage extends React.Component {
   componentDidMount() {
@@ -14,17 +14,15 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const { courses, lectures, isLectureDisabled } = this.props;
+    const { courses, lectures, lecturesError } = this.props;
 
     return (
       <>
         <Heading>Cursos</Heading>
         <CourseList courses={courses} />
         <Heading>Eventos e Palestras</Heading>
-        {isLectureDisabled ? (
-          <LeadMessage>
-            Em breve conteúdos novos de eventos e palestras.
-          </LeadMessage>
+        {lecturesError ? (
+          <LeadMessage>{lecturesError.message}</LeadMessage>
         ) : (
           <CourseList courses={lectures} />
         )}
@@ -38,15 +36,18 @@ HomePage.defaultProps = {
   loadLectures: () => {},
   courses: [],
   lectures: [],
-  isLectureDisabled: false
+  lecturesError: null
 };
 
 const mapStateToProps = state => ({
-  courses: state.courses
+  courses: state.courses,
+  lectures: state.lectures,
+  lecturesError: state.lecturesError
 });
 
 const mapDispatchToProps = {
-  loadCourses: onGetCourses
+  loadCourses: onGetCourses,
+  loadLectures: onGetLectures
 };
 
 export default connect(

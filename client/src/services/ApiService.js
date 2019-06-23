@@ -10,7 +10,9 @@ const ApiService = () => {
 
     getCourse: id => axios.get(`${baseURL}/courses/${id}`),
 
-    getCourses: () => axios.get(`${baseURL}/courses`)
+    getCourses: () => axios.get(`${baseURL}/courses`),
+
+    getLectures: () => axios.get(`${baseURL}/lectures`)
   };
 };
 

@@ -42,12 +42,14 @@ test("it should render a list of lectures", () => {
   expect(getByText(/comprar/i)).toBeTruthy();
 });
 
-test("it should show lecture disabled message", () => {
-  const { getByText } = render(<HomePage isLectureDisabled />);
+test("it should show lecture error message", () => {
+  const lecturesError = {
+    message: "test error message"
+  };
 
-  expect(
-    getByText("Em breve conteúdos novos de eventos e palestras.")
-  ).toBeTruthy();
+  const { getByText } = render(<HomePage lecturesError={lecturesError} />);
+
+  expect(getByText("test error message")).toBeTruthy();
 });
 
 test("it should call loadLectures on mounting", () => {

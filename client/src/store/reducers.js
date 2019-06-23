@@ -6,16 +6,20 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   GET_COURSE,
-  GET_COURSE_SUCCESS
+  GET_COURSE_SUCCESS,
+  GET_LECTURES_SUCCESS,
+  GET_LECTURES_FAIL
 } from "./actions";
 
-const initialState = {
-  isAuthenticated: false,
+export const initialState = {
+  isAuthenticated: true,
   user: {},
   registerValidation: {},
   loginValidation: {},
   courses: [],
-  course: {}
+  course: {},
+  lectures: [],
+  lecturesError: null
 };
 
 const reducers = (state = initialState, action) => {
@@ -58,6 +62,18 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         course: action.course
+      };
+    case GET_LECTURES_SUCCESS:
+      return {
+        ...state,
+        lectures: action.lectures,
+        lecturesError: null
+      };
+    case GET_LECTURES_FAIL:
+      return {
+        ...state,
+        lectures: [],
+        lecturesError: action.error
       };
     case LOGOUT:
       return {

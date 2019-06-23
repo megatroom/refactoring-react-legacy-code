@@ -15,7 +15,10 @@ import {
   GET_COURSES_FAIL,
   LOGIN,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  GET_LECTURES,
+  onGetLecturesSuccess,
+  onGetLecturesFail
 } from "./actions";
 
 function* onLogin(action) {
@@ -111,12 +114,23 @@ function* onGetCourse(action) {
   }
 }
 
+export function* onGetLectures() {
+  try {
+    const response = yield ApiService().getLectures();
+
+    yield put(onGetLecturesSuccess(response.data));
+  } catch (error) {
+    yield put(onGetLecturesFail(error));
+  }
+}
+
 function* sagas() {
   yield all([
     takeLatest(REGISTER, onRegister),
     takeLatest(LOGIN, onLogin),
     takeLatest(GET_COURSES, onGetCourses),
-    takeLatest(GET_COURSE, onGetCourse)
+    takeLatest(GET_COURSE, onGetCourse),
+    takeLatest(GET_LECTURES, onGetLectures)
   ]);
 }
 
