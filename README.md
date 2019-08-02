@@ -6,8 +6,8 @@ Este projeto é utilizado como fonte para uma série de artigos no Medium:
 
 - [Parte I - Introdução, primeiros passos e teste de integração](https://medium.com/m4u-tech/refatorando-c%C3%B3digo-legado-em-projetos-react-parte-i-2214fd9ee04d)
 - [Parte II - Refatoração, teste de unidade, testando e refatorando componentes](https://medium.com/m4u-tech/refatorando-c%C3%B3digo-legado-em-projetos-react-parte-ii-f3c1d898c11e)
-- Parte III - Projetos do mundo real
-- Parte IV - Redux
+- [Parte III - Projetos do mundo real](https://medium.com/m4u-tech/refatorando-c%C3%B3digo-legado-em-projetos-react-parte-iii-9b6bf4a1c98e)
+- [Parte IV - Redux](https://medium.com/m4u-tech/refatorando-c%C3%B3digo-legado-em-projetos-react-parte-iv-2913d1251305)
 - Parte V - Padrões, mitos e verdades
 
 ## Como executar o projeto
